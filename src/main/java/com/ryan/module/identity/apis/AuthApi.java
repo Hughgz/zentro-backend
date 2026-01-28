@@ -2,9 +2,11 @@ package com.ryan.module.identity.apis;
 
 import com.ryan.module.identity.application.interfaces.IAuth;
 import com.ryan.module.identity.dtos.request.AuthRequest;
+import com.ryan.module.identity.dtos.request.RefreshTokenRequest;
 import com.ryan.module.identity.dtos.request.UserRegisterRequest;
 import com.ryan.module.identity.dtos.response.ApiResponse;
 import com.ryan.module.identity.dtos.response.AuthResponse;
+import com.ryan.module.identity.dtos.response.RefreshTokenResponse;
 import com.ryan.module.identity.dtos.response.UserResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,6 +31,12 @@ public class AuthApi {
     @PostMapping("/login")
     public ResponseEntity<ApiResponse<AuthResponse>> login(@RequestBody AuthRequest request){
         AuthResponse response = _auth.login(request);
+        return ResponseEntity.status(200).body(ApiResponse.ok(response));
+    }
+
+    @PostMapping("/refresh")
+    public ResponseEntity<ApiResponse<?>> refresh(@RequestBody RefreshTokenRequest request){
+        RefreshTokenResponse response = _auth.refresh(request);
         return ResponseEntity.status(200).body(ApiResponse.ok(response));
     }
 }

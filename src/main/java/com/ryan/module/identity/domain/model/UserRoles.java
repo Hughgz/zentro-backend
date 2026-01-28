@@ -1,7 +1,7 @@
 package com.ryan.module.identity.domain.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 import javax.management.relation.Role;
 import java.time.Instant;
@@ -9,10 +9,13 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "user_role")
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserRoles {
     @EmbeddedId
-    private UserRoleId id;
+    private UserRoleId id = new UserRoleId();
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @MapsId("userId")
     @JoinColumn(name = "user_id", nullable = false)
@@ -29,11 +32,8 @@ public class UserRoles {
 
     @PrePersist
     void prePersist(){
-        if(createdAt == null){
+        if(createdAt == null) {
             createdAt = Instant.now();
-        }
-        if(id == null && user != null && role != null){
-            id = new UserRoleId(user.getUserId(), role.getRoleId());
         }
     }
 }

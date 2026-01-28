@@ -1,14 +1,11 @@
 package com.ryan.module.identity.utils;
 
 import java.util.Date;
-import java.util.Objects;
 import java.util.UUID;
 import javax.crypto.SecretKey;
 
-import com.ryan.module.identity.domain.model.UserRoles;
 import com.ryan.module.identity.domain.model.Users;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import io.jsonwebtoken.Claims;
@@ -125,7 +122,7 @@ public class JwtTokenUtil {
     }
 
     //extract token
-    public String extractAccessToken(String accessToken) {
+    public String extractUsernameFromAccessToken(String accessToken) {
         Claims claims = extractAccessClaims(accessToken);
         String type = claims.get("token_type", String.class);
         if(!type.equals("access")) {
@@ -134,7 +131,7 @@ public class JwtTokenUtil {
         return claims.getSubject();
     }
 
-    public String extractRefreshToken(String refreshToken) {
+    public String extractUsernameFromRefreshToken(String refreshToken) {
         Claims claims = extractRefreshClaims(refreshToken);
         String type = claims.get("token_type", String.class);
         if(!type.equals("refresh")) {

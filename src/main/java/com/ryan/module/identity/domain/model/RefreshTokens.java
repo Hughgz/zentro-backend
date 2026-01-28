@@ -1,7 +1,7 @@
 package com.ryan.module.identity.domain.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 import java.time.Instant;
 import java.util.UUID;
@@ -11,14 +11,16 @@ import java.util.UUID;
         @Index(name = "idx_refresh_tokens_user_id", columnList = "user_id"),
         @Index(name = "idx_refresh_tokens_expires_at", columnList = "expires_at")
 })
-@Data
-
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class RefreshTokens {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-    @Column(name = "token_hash", nullable = false, length = 500)
-    private String tokenHash;
+    @Column(name = "refresh_token", nullable = false, length = 500)
+    private String refreshToken;
     @Column(name = "expires_at")
     private Instant expiresAt;
     private Boolean revoked;

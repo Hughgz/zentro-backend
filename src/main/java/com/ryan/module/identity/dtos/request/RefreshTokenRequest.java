@@ -18,8 +18,5 @@ import java.time.Instant;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RefreshTokenRequest {
-    private String tokenHash;
-    private Instant expiresAt;
-    private Instant createdAt;
-    private UserResponse user;
+    private String refreshToken;
 }

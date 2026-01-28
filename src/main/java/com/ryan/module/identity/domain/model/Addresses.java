@@ -1,7 +1,7 @@
 package com.ryan.module.identity.domain.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 import java.util.Date;
 import java.util.UUID;
@@ -10,7 +10,10 @@ import java.util.UUID;
 @Table(name = "address", indexes = {
         @Index(name = "idx_address_user_id", columnList = "user_id")
 })
-@Data
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Addresses {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

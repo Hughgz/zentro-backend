@@ -5,8 +5,7 @@ import com.ryan.module.identity.shared.enums.RoleCodeEnum;
 import com.ryan.module.identity.shared.enums.SexEnum;
 import com.ryan.module.identity.shared.enums.StatusEnum;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 import org.jspecify.annotations.Nullable;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -24,7 +23,10 @@ import java.util.stream.Collectors;
         @Index(name = "idx_user_username", columnList = "username"),
         @Index(name = "idx_user_phone", columnList = "phone")
 })
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Users extends BaseEntity implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -59,7 +61,7 @@ public class Users extends BaseEntity implements UserDetails {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Addresses> address;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<UserRoles> userRoles;
+    private Set<UserRoles> userRoles = new HashSet<>();
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<RefreshTokens> refreshTokens;
 
@@ -94,7 +96,7 @@ public class Users extends BaseEntity implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return UserDetails.super.isAccountNonLocked();
+        return status != StatusEnum.BLOCKED;
     }
 
     @Override
@@ -104,6 +106,6 @@ public class Users extends BaseEntity implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return UserDetails.super.isEnabled();
+        return status == StatusEnum.ACTIVE;
     }
 }
