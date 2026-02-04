@@ -50,7 +50,6 @@ public class AuthService implements IAuth {
         _userRoleRepository = userRoleRepository;
         _roleRepository = roleRepository;
     }
-
     @Override
     public AuthResponse login(AuthRequest request) {
 
