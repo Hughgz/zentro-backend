@@ -13,11 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/role")
 public class RoleApi {
     private final IRole _roleService;
-
     public RoleApi(IRole roleService) {
         _roleService = roleService;
     }
-
     @PostMapping("/roles")
     public ResponseEntity<?> insert(@RequestBody RoleRequest request){
         _roleService.insertRole(request);

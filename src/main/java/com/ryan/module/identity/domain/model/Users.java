@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
         @Index(name = "idx_user_email", columnList = "email"),
         @Index(name = "idx_user_username", columnList = "username"),
         @Index(name = "idx_user_phone", columnList = "phone")
-})
+}, schema = "IDT")
 @Getter
 @Setter
 @NoArgsConstructor

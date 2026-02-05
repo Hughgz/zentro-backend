@@ -8,7 +8,7 @@ import java.time.Instant;
 import java.util.UUID;
 
 @Entity
-@Table(name = "user_role")
+@Table(name = "user_role", schema = "IDT")
 @Getter
 @Setter
 @NoArgsConstructor

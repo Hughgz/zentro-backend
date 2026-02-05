@@ -11,7 +11,7 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Entity
-@Table(name = "roles")
+@Table(name = "roles", schema = "IDT")
 @Getter
 @Setter
 @NoArgsConstructor

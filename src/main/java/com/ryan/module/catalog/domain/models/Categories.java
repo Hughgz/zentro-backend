@@ -1,6 +1,5 @@
 package com.ryan.module.catalog.domain.models;
 
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,16 +8,17 @@ import lombok.Setter;
 
 import java.util.UUID;
 
-@Table(name = "brands", schema = "CTL")
+@Table(name = "categories", schema = "CTL")
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Brands {
+public class Categories {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID brandId;
+    private UUID categoryId;
     private String name;
     private String slug;
+    private UUID parentId;
 }

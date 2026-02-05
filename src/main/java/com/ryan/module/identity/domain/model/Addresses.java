@@ -9,7 +9,7 @@ import java.util.UUID;
 @Entity
 @Table(name = "address", indexes = {
         @Index(name = "idx_address_user_id", columnList = "user_id")
-})
+}, schema = "IDT")
 @Setter
 @Getter
 @NoArgsConstructor

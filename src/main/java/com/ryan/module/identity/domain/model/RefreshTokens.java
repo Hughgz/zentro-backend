@@ -10,7 +10,7 @@ import java.util.UUID;
 @Table(name = "refresh_token", indexes = {
         @Index(name = "idx_refresh_tokens_user_id", columnList = "user_id"),
         @Index(name = "idx_refresh_tokens_expires_at", columnList = "expires_at")
-})
+}, schema = "IDT")
 @Getter
 @Setter
 @NoArgsConstructor
