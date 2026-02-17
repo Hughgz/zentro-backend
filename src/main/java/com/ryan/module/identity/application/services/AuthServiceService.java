@@ -1,7 +1,7 @@
 package com.ryan.module.identity.application.services;
 
 import com.ryan.common.utils.MapperUtil;
-import com.ryan.module.identity.application.interfaces.IAuth;
+import com.ryan.module.identity.application.interfaces.IAuthService;
 import com.ryan.module.identity.domain.model.RefreshTokens;
 import com.ryan.module.identity.domain.model.Roles;
 import com.ryan.module.identity.domain.model.UserRoles;
@@ -25,7 +25,7 @@ import org.springframework.stereotype.Service;
 import java.time.Instant;
 
 @Service
-public class AuthService implements IAuth {
+public class AuthServiceService implements IAuthService {
     private final UserRepository _repository;
     private final MapperUtil _mapper;
     private final AuthenticationManager _authenticationManager;
@@ -36,11 +36,11 @@ public class AuthService implements IAuth {
 
     private final PasswordEncoder _encoder;
 
-    public AuthService(UserRepository repository, PasswordEncoder encoder,
-                       MapperUtil mapper, AuthenticationManager authenticationManager,
-                       JwtTokenUtil jwtToken, RefreshTokenRepository refreshTokenRepository,
-                        UserRoleRepository userRoleRepository,
-                       RoleRepository roleRepository) {
+    public AuthServiceService(UserRepository repository, PasswordEncoder encoder,
+                              MapperUtil mapper, AuthenticationManager authenticationManager,
+                              JwtTokenUtil jwtToken, RefreshTokenRepository refreshTokenRepository,
+                              UserRoleRepository userRoleRepository,
+                              RoleRepository roleRepository) {
         _repository = repository;
         _mapper = mapper;
         _authenticationManager = authenticationManager;

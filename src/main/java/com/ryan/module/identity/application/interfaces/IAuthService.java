@@ -8,7 +8,7 @@ import com.ryan.module.identity.dtos.response.AuthResponse;
 import com.ryan.module.identity.dtos.response.RefreshTokenResponse;
 import com.ryan.module.identity.dtos.response.UserResponse;
 
-public interface IAuth {
+public interface IAuthService {
     AuthResponse login(AuthRequest request);
     UserResponse register(UserRegisterRequest request);
     void forgotPassword(ForgotPasswordRequest request);

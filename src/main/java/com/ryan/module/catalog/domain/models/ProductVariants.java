@@ -30,8 +30,6 @@ public class ProductVariants extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id", nullable = false)
     private Products product;
-
-
     @OneToMany(mappedBy = "variant", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<VariantOptions> options = new HashSet<>();
 

@@ -28,7 +28,6 @@ public class JwtTokenUtil {
     @Value("${jwt.refreshTokenExpiration}")
     private long refreshTokenExpiration;
 
-
     // generate token
     public String generateAccessToken(Users user) {
         return Jwts.builder()

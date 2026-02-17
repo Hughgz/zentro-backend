@@ -1,6 +1,5 @@
-package com.ryan.module.catalog.domain.models;
+package com.ryan.module.catalog.dtos.response;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,17 +7,12 @@ import lombok.Setter;
 
 import java.util.UUID;
 
-@Table(name = "categories", schema = "CTL")
-@Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Categories {
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+public class CategoryResponse {
     private UUID categoryId;
-    @Column(nullable = false, unique = true)
     private String name;
     private String slug;
     private UUID parentId;
